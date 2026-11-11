@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>영상 속 상품 링크</title>
+<style>
+:root{--bg:#f4f5f7;--panel:#fff;--text:#111318;--muted:#5f6672;--line:#e3e6eb;--accent:#2a62f5}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0f11;--panel:#17181b;--text:#f1f2f4;--muted:#9ea3ad;--line:#2a2c31;--accent:#5b8cff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:22px;margin:4px 0 6px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+.notice{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:14px}
+input{width:100%;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin-bottom:14px}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:560px){.list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit}
+.pic{position:relative;display:block;aspect-ratio:1/1;background:var(--line)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.num{position:absolute;left:8px;top:8px;background:var(--accent);color:#fff;font-weight:800;font-size:15px;padding:3px 10px;border-radius:999px}
+.body{display:flex;flex-direction:column;gap:3px;padding:9px 10px 11px;min-width:0}
+.name{font-size:14px;font-weight:700;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sub{font-size:12px;color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.go{font-size:13px;font-weight:700;color:var(--accent);margin-top:2px}
+.empty{color:var(--muted);text-align:center;padding:30px 0;display:none}
+footer{color:var(--muted);font-size:12px;margin-top:22px}
+</style>
+</head>
+<body>
+<main>
+<h1>영상 속 상품 링크</h1>
+<p class="sub">영상에 나온 <b>상품번호</b>를 찾아 누르면 쿠팡 상품 페이지로 이동해요.</p>
+<div class="notice">이 영상은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
+<input id="q" type="search" inputmode="search" placeholder="상품번호 또는 이름으로 찾기 (예: 12)" autocomplete="off">
+<div class="list" id="list">
+<a class="card" href="https://link.coupang.com/a/izhnISGiNU" target="_blank" rel="sponsored nofollow noopener" data-k="2 커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩 충전식 손난로 단점">
+  <span class="pic"><img src="https://t2a.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/3b8f/eab59f576ca14e5afe14f347c8423e0657c77649557f4ac7843b87b14cbd.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">2번</span></span>
+  <span class="body"><span class="name">커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩</span><span class="sub">충전식 손난로 단점</span><span class="go">쿠팡에서 보기 ›</span></span>
+</a>
+<a class="card" href="https://link.coupang.com/a/iAGBkTMwkC" target="_blank" rel="sponsored nofollow noopener" data-k="1 마른파이브 여성용 히트터치 기모 발열내의 세트 기모 내복 고를 때">
+  <span class="pic"><img src="https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/retail/images/61241397240123-ccf18a2a-f8eb-4abe-8561-17dd436175ab.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">1번</span></span>
+  <span class="body"><span class="name">마른파이브 여성용 히트터치 기모 발열내의 세트</span><span class="sub">기모 내복 고를 때</span><span class="go">쿠팡에서 보기 ›</span></span>
+</a>
+</div>
+<div class="empty" id="empty">찾는 상품이 없어요. 번호를 다시 확인해 주세요.</div>
+<footer>가격과 재고는 쿠팡에서 확인해 주세요. 영상의 일부 장면은 AI로 제작된 연출이며 실제 제품과 다를 수 있습니다.</footer>
+</main>
+<script>
+var q=document.getElementById('q'),cards=[].slice.call(document.querySelectorAll('.card')),empty=document.getElementById('empty');
+function run(){var v=q.value.trim().toLowerCase().replace(/번$/,'');var n=0;cards.forEach(function(c){var k=c.getAttribute('data-k');var hit=!v||(/^\d+$/.test(v)?k.split(' ')[0]===v:k.indexOf(v)>=0);c.style.display=hit?'':'none';if(hit)n++});empty.style.display=n?'none':'block'}
+q.addEventListener('input',run);
+var m=location.hash.match(/(\d+)/)||location.search.match(/[?&]n=(\d+)/);if(m){q.value=m[1];run()}
+</script>
+</body>
+</html>
