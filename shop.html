@@ -17,7 +17,9 @@ h1{font-size:22px;margin:4px 0 6px}
 input{width:100%;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text);margin-bottom:14px}
 .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:560px){.list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit}
+.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.main{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
+.vid{display:block;border-top:1px solid var(--line);padding:8px 10px;font-size:12px;color:var(--muted);text-decoration:none}
 .pic{position:relative;display:block;aspect-ratio:1/1;background:var(--line)}
 .pic img{width:100%;height:100%;object-fit:cover;display:block}
 .num{position:absolute;left:8px;top:8px;background:var(--accent);color:#fff;font-weight:800;font-size:15px;padding:3px 10px;border-radius:999px}
@@ -36,14 +38,20 @@ footer{color:var(--muted);font-size:12px;margin-top:22px}
 <div class="notice">이 영상은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
 <input id="q" type="search" inputmode="search" placeholder="상품번호 또는 이름으로 찾기 (예: 12)" autocomplete="off">
 <div class="list" id="list">
-<a class="card" href="https://link.coupang.com/a/izhnISGiNU" target="_blank" rel="sponsored nofollow noopener" data-k="2 커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩 충전식 손난로 단점">
-  <span class="pic"><img src="https://t2a.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/3b8f/eab59f576ca14e5afe14f347c8423e0657c77649557f4ac7843b87b14cbd.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">2번</span></span>
-  <span class="body"><span class="name">커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩</span><span class="sub">충전식 손난로 단점</span><span class="go">쿠팡에서 보기 ›</span></span>
-</a>
-<a class="card" href="https://link.coupang.com/a/iAGBkTMwkC" target="_blank" rel="sponsored nofollow noopener" data-k="1 마른파이브 여성용 히트터치 기모 발열내의 세트 기모 내복 고를 때">
-  <span class="pic"><img src="https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/retail/images/61241397240123-ccf18a2a-f8eb-4abe-8561-17dd436175ab.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">1번</span></span>
-  <span class="body"><span class="name">마른파이브 여성용 히트터치 기모 발열내의 세트</span><span class="sub">기모 내복 고를 때</span><span class="go">쿠팡에서 보기 ›</span></span>
-</a>
+<div class="card" data-k="2 커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩 충전식 손난로 단점">
+  <a class="main" href="https://link.coupang.com/a/izhnISGiNU" target="_blank" rel="sponsored nofollow noopener">
+    <span class="pic"><img src="https://t2a.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/3b8f/eab59f576ca14e5afe14f347c8423e0657c77649557f4ac7843b87b14cbd.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">2번</span></span>
+    <span class="body"><span class="name">커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩</span><span class="sub">충전식 손난로 단점</span><span class="go">쿠팡에서 보기 ›</span></span>
+  </a>
+  <a class="vid" href="https://youtube.com/shorts/0zujoOoo1zs" target="_blank" rel="noopener">▶ 영상 보기</a>
+</div>
+<div class="card" data-k="1 마른파이브 여성용 히트터치 기모 발열내의 세트 기모 내복 고를 때">
+  <a class="main" href="https://link.coupang.com/a/iAGBkTMwkC" target="_blank" rel="sponsored nofollow noopener">
+    <span class="pic"><img src="https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/retail/images/61241397240123-ccf18a2a-f8eb-4abe-8561-17dd436175ab.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">1번</span></span>
+    <span class="body"><span class="name">마른파이브 여성용 히트터치 기모 발열내의 세트</span><span class="sub">기모 내복 고를 때</span><span class="go">쿠팡에서 보기 ›</span></span>
+  </a>
+  <a class="vid" href="https://youtube.com/shorts/pGyouTrnA54" target="_blank" rel="noopener">▶ 영상 보기</a>
+</div>
 </div>
 <div class="empty" id="empty">찾는 상품이 없어요. 번호를 다시 확인해 주세요.</div>
 <footer>가격과 재고는 쿠팡에서 확인해 주세요. 영상의 일부 장면은 AI로 제작된 연출이며 실제 제품과 다를 수 있습니다.</footer>
