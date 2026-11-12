@@ -28,6 +28,7 @@ input{width:100%;font-size:16px;padding:12px 14px;border-radius:12px;border:1px 
 .sub{font-size:12px;color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .go{font-size:13px;font-weight:700;color:var(--accent);margin-top:2px}
 .empty{color:var(--muted);text-align:center;padding:30px 0;display:none}
+.all{display:none;width:100%;margin-top:14px;padding:12px;font-size:14px;font-weight:700;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--accent);cursor:pointer}
 footer{color:var(--muted);font-size:12px;margin-top:22px}
 </style>
 </head>
@@ -38,6 +39,12 @@ footer{color:var(--muted);font-size:12px;margin-top:22px}
 <div class="notice">이 영상은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</div>
 <input id="q" type="search" inputmode="search" placeholder="상품번호 또는 이름으로 찾기 (예: 12)" autocomplete="off">
 <div class="list" id="list">
+<div class="card" data-k="3 스탠리 퀜처 h2.0 플로우스테이트 텀블러 3만원대 887ml 개봉">
+  <a class="main" href="https://link.coupang.com/a/iBxifb2708" target="_blank" rel="sponsored nofollow noopener">
+    <span class="pic"><img src="https://thumbnail.coupangcdn.com/thumbnails/remote/657x657q90trim/image/retail/images/2849633657372996-bcd9b1ee-ad66-43c3-9682-ce568d3cd3b4.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">3번</span></span>
+    <span class="body"><span class="name">스탠리 퀜처 H2.0 플로우스테이트 텀블러</span><span class="sub">3만원대 887ml 개봉</span><span class="go">쿠팡에서 보기 ›</span></span>
+  </a>
+</div>
 <div class="card" data-k="2 커버원 3초 발열 양면 전자 충전식 손난로 대용량 보조배터리 겸용 핫팩 충전식 손난로 단점">
   <a class="main" href="https://link.coupang.com/a/izhnISGiNU" target="_blank" rel="sponsored nofollow noopener">
     <span class="pic"><img src="https://t2a.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/3b8f/eab59f576ca14e5afe14f347c8423e0657c77649557f4ac7843b87b14cbd.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"><span class="num">2번</span></span>
@@ -54,11 +61,13 @@ footer{color:var(--muted);font-size:12px;margin-top:22px}
 </div>
 </div>
 <div class="empty" id="empty">찾는 상품이 없어요. 번호를 다시 확인해 주세요.</div>
+<button class="all" id="all" type="button">다른 상품도 보기 (전체 목록)</button>
 <footer>가격과 재고는 쿠팡에서 확인해 주세요. 영상의 일부 장면은 AI로 제작된 연출이며 실제 제품과 다를 수 있습니다.</footer>
 </main>
 <script>
 var q=document.getElementById('q'),cards=[].slice.call(document.querySelectorAll('.card')),empty=document.getElementById('empty');
-function run(){var v=q.value.trim().toLowerCase().replace(/번$/,'');var n=0;cards.forEach(function(c){var k=c.getAttribute('data-k');var hit=!v||(/^\d+$/.test(v)?k.split(' ')[0]===v:k.indexOf(v)>=0);c.style.display=hit?'':'none';if(hit)n++});empty.style.display=n?'none':'block'}
+function run(){var v=q.value.trim().toLowerCase().replace(/번$/,'');var n=0;cards.forEach(function(c){var k=c.getAttribute('data-k');var hit=!v||(/^\d+$/.test(v)?k.split(' ')[0]===v:k.indexOf(v)>=0);c.style.display=hit?'':'none';if(hit)n++});empty.style.display=n?'none':'block';all.style.display=v?'block':'none'}
+var all=document.getElementById('all');all.addEventListener('click',function(){q.value='';run();if(history.replaceState)history.replaceState(null,'',location.pathname)});
 q.addEventListener('input',run);
 var m=location.hash.match(/(\d+)/)||location.search.match(/[?&]n=(\d+)/);if(m){q.value=m[1];run()}
 </script>
